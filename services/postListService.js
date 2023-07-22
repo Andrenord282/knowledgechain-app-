@@ -5,9 +5,10 @@ const {
 } = require('../shared/utilities/errorHandler');
 const postModel = require('../models/post');
 
-class PostListerService {
-    initPostList = async (data) => {
+class PostListService {
+    getPosts = async (data) => {
         const { cursor, limit, sort } = data;
+        console.log(data)
         const posts = await postModel
             .find()
             .skip(cursor)
@@ -18,4 +19,4 @@ class PostListerService {
     };
 }
 
-module.exports = new PostListerService();
+module.exports = new PostListService();

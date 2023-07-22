@@ -14,7 +14,7 @@ const upload = multer({
 });
 
 router.post('/', upload.any(), postController.createPost);
-router.get('/:type', postController.getPosts);
+router.get('/', postController.getPosts);
 // router.get('/:id');
 
 module.exports = router;

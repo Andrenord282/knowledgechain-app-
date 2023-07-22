@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const postCreatorService = require('../services/postCreatorService');
-const PostListerService = require('../services/postListerService');
+const postListService = require('../services/postListService');
 const topicCreatorService = require('../services/topicCreatorService');
 
 class PostController {
@@ -15,7 +15,7 @@ class PostController {
 
             await topicCreatorService.createTopic(topics, session);
             await postCreatorService.createPost(params, schema, topics, files, session);
-            
+
             await session.commitTransaction();
 
             res.status(200).send('Пост создан');
@@ -29,16 +29,8 @@ class PostController {
 
     getPosts = async (req, res, next) => {
         try {
-            switch (true) {
-                case req.params.type === 'init-posts':
-                    const posts = await PostListerService.initPostList(req.query);
-                    res.json(posts);
-                    break;
-
-                default:
-                    break;
-            }
-            res.status(200).send('Список готов');
+            const posts = await postListService.getPosts(req.query);
+            res.json(posts);
         } catch (error) {
             next(error);
         }
