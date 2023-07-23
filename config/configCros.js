@@ -1,4 +1,4 @@
-const crosList = ['https://knowledgechain-app.vercel.app', 'http://localhost:3000'];
+const crosList = ['https://knowledgechain-app-andrenord282.vercel.app', 'http://localhost:3000'];
 
 const configCros = {
 	origin: (origin, callback) => {

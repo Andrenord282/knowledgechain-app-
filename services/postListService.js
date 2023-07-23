@@ -8,7 +8,7 @@ const postModel = require('../models/post');
 class PostListService {
     getPosts = async (data) => {
         const { cursor, limit, sort } = data;
-        console.log(data)
+
         const posts = await postModel
             .find()
             .skip(cursor)
