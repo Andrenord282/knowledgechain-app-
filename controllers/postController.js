@@ -35,6 +35,15 @@ class PostController {
             next(error);
         }
     };
+
+    getPostsTotalCount = async (req, res, next) => {
+        try {
+            const postsTotalCount = await postListService.getPostsTotalCount();
+            res.json(postsTotalCount);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 module.exports = new PostController();

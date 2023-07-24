@@ -17,6 +17,12 @@ class PostListService {
 
         return posts;
     };
+
+    getPostsTotalCount = async () => {
+        const postsTotalCount = await postModel.countDocuments();
+
+        return postsTotalCount;
+    };
 }
 
 module.exports = new PostListService();

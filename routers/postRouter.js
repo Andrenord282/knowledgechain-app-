@@ -15,6 +15,7 @@ const upload = multer({
 
 router.post('/', upload.any(), postController.createPost);
 router.get('/', postController.getPosts);
+router.get('/total-count', postController.getPostsTotalCount);
 // router.get('/:id');
 
 module.exports = router;
